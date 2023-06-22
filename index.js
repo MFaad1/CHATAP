@@ -13,6 +13,8 @@
   const openai = new OpenAIApi(configuration);
   app.post('/chat', async (req, res) => {
     const message = req.body.input
+
+    console.log(message, "message contentt")
     try {
       const completion = await openai.createChatCompletion(
         {
@@ -22,6 +24,7 @@
             { role: 'user', content: message },
           ],
           stream: true,
+
         },
         { responseType: 'stream' }
       );
